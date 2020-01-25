@@ -1,0 +1,36 @@
+.login-header {
+    text-align: center;
+    padding: 0.5em;
+    .login-title {
+        font-size: 24px;
+        font-weight: 600;
+    }
+}
+
+.login-body {
+   padding: 0 2em;
+
+   .basic-format-field {
+        width: 100%;
+    }
+
+    .login-button {
+        display: flex;
+        flex-direction: column;
+        margin: 0.5em 0;
+    }
+}
+
+.forgot-section {
+    display: flex;
+    flex-direction: column;
+
+    .forgot-password {
+        margin: 1em 0;
+        text-decoration: none;
+        font-size: 14px;
+        color: grey;
+    }
+}
+
+

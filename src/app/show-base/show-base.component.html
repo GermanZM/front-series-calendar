@@ -1,0 +1,16 @@
+<div  class="showBase">
+    <div class="showBaseFilterSection">
+      FILTROS
+    </div>
+    <div  class="showBaseContentSection" *ngIf="observer$ | async as obs">
+        <app-show-detail [child] = 'child' [childObject] = 'obs'></app-show-detail>
+    </div>
+  
+  </div>
+  
+  
+  
+  
+  
+  
+  

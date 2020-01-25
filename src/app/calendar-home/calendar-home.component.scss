@@ -1,0 +1,11 @@
+
+//Responsive
+@media all and (min-width: 0px){
+	#content-right {order: 1;}
+	#content-left {order: 2;}
+}
+
+@media all and (min-width: 576px){
+	#content-left {order: 1;}
+	#content-right {order: 2;}
+}

@@ -1,0 +1,64 @@
+$primary: rgb(111,0,255);
+.sidenav-content {
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+}
+
+.mat-sidenav-content .mat-toolbar {
+  background-color: $primary;
+}
+
+mat-toolbar {
+  .main-menu {
+    .router-link-active {
+      background: darken($color: $primary, $amount: 20%);
+    }
+    
+    a {
+      padding: 0.8em;
+      text-decoration: none;
+      color: white;
+      display: inline-block;
+      &:hover {
+          background: darken($color: $primary, $amount: 10%);
+      }
+    }
+
+  }
+}
+
+.dropdown-user {
+  float:right;
+  padding: 0.8em;
+}
+
+.btn-user {
+  color:white;
+  cursor: pointer;
+}
+
+.icon-user{
+  vertical-align: middle;
+  transform: scale(1.25);
+  margin-right: 0.5em;
+}
+.username{
+  vertical-align: middle;
+}
+
+.hidden {
+  display: none;
+}

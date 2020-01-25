@@ -1,0 +1,43 @@
+<!-- Show login screen if the user is not logged in -->
+<ng-container *ngIf="!isLogin$; else logged">
+    <div class="home-zcalendar">
+        <div class= "container">
+            <div class="row">
+                <div class = "col-sm-12 col-md-6  col-lg-8 home-container-section align-self-center">
+                    <div class="title">Z-Calendar.com</div>
+                    <div class="text">Bienvenido a Z-Calendar, inicia sesión para acceder a tus series y películas favoritas</div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4 home-container-section align-self-center">
+                    <span *ngIf="!urlLogin">
+                        <a [routerLink]="['/login']" class="btn btn-link btn-home" (click)="loginClick()">Login</a>
+                        <a [routerLink]="['/register']" class="btn btn-link btn-home">Register</a>
+                    </span>
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<!-- Show Z-Calendar screen if the user is logged in -->
+<ng-template #logged >
+        <!-- Header SlideNav -->
+        <app-main-nav>
+            <!-- Content -->
+            <router-outlet></router-outlet>
+            <!-- Footer -->
+            <footer id="footer">
+                FOOTER WEB Z-CALENDAR
+            </footer>
+        </app-main-nav>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
