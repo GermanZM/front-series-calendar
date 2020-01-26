@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
+import { FilmService } from '../film/service/FilmService';
 
 @Component({
   selector: 'app-show-detail',
@@ -14,7 +15,7 @@ export class ShowDetailComponent {
   @Input() child: string;
   @Input() childObject: any;
 
-  constructor(private breakpointObserver: BreakpointObserver, private http: HttpClient) {}
+  constructor(private breakpointObserver: BreakpointObserver, private filmService: FilmService) {}
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   .pipe(
@@ -24,13 +25,6 @@ export class ShowDetailComponent {
 
   getChildObject(): any {
     return this.childObject;
-  }
-
-  consoleImage(url: string) {
-    const image = new Image();
-    image.src = 'assets/img/default.png';
-    console.log(image);
-
   }
 
 }
