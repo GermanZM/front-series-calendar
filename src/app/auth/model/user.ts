@@ -4,10 +4,10 @@ export class User {
     username: string;
     password: string;
     enabled: boolean;
-    roles:string[] = [];
+    roles: string[] = [];
     accessToken: string;
 
-    loadUserByUsername(user: User,username : string) : User {
+    loadUserByUsername(user: User, username: string): User {
         user.username = username;
 
         return user;
