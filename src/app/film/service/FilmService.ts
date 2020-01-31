@@ -15,7 +15,7 @@ export class FilmService {
         ({
           Authorization: `Bearer ${this.calendarApp.getCurrentUser().accessToken}`
         });
-        return this.http.get(this.calendarApp.getGlobalProperties().urlFilms, {headers: httpOptions});
+        return this.http.get(`${this.calendarApp.getGlobalProperties().baseServerUrl}/films/`, {headers: httpOptions});
     }
 
     getFilmImage(imageName: string): Observable<any> {
@@ -23,7 +23,7 @@ export class FilmService {
       ({
         Authorization: `Bearer ${this.calendarApp.getCurrentUser().accessToken}`
       });
-      const url = `${this.calendarApp.getGlobalProperties().urlFilms}/images/${imageName}`;
+      const url = `${this.calendarApp.getGlobalProperties().baseServerUrl}/films/images/${imageName}`;
       return this.http.get(url, {headers: httpOptions});
   }
 

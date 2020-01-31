@@ -3,6 +3,9 @@ import { BreakpointObserver} from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { CalendarGlobalApp } from '../CalendarGlobalApp';
+import { AuthService } from '../auth/service/auth-service';
+import swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-nav',
@@ -20,8 +23,30 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private calendarApp: CalendarGlobalApp) {
+  constructor(private breakpointObserver: BreakpointObserver, private calendarApp: CalendarGlobalApp,
+              private authService: AuthService, private router: Router ) {
     this.user = this.calendarApp.getCurrentUser().username;
+  }
+
+  logout_click() {
+    this.authService.logout()
+    .subscribe(response => {
+      console.log(response);
+      /* const actualUserKey = this.calendarApp.getGlobalProperties().actualUser;
+      const isLoginKey = this.calendarApp.getGlobalProperties().isLoginStorage;
+      if (sessionStorage.getItem(actualUserKey) != null || sessionStorage.getItem(isLoginKey) != null) {
+        sessionStorage.removeItem(isLoginKey);
+        sessionStorage.removeItem(actualUserKey);
+        this.user = null;
+        console.log('Se ha desconectado correctamente');
+        this.router.navigate(['/']);
+      }*/
+    }, error => {
+      if (error.status === 400) {
+        swal.fire('Logout', 'Error al desloguear, inténtelo más tarde', 'error');
+      }
+    }
+    );
   }
 
 

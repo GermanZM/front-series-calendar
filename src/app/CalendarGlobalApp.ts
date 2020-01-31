@@ -36,16 +36,4 @@ export class CalendarGlobalApp {
         return this.properties;
     }
 
-    /*logout() {
-      const actualUserKey = this.getGlobalProperties().actualUser;
-      const isLoginKey = this.getGlobalProperties().isLoginStorage;
-      if (sessionStorage.getItem(actualUserKey) != null || sessionStorage.getItem(isLoginKey) != null) {
-        sessionStorage.removeItem(isLoginKey);
-        sessionStorage.removeItem(actualUserKey);
-        this.user = null;
-        console.log('Se ha desconectado correctamente');
-        this.router.navigate(['/']);
-      }
-    }*/
-
 }
