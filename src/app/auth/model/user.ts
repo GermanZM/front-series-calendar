@@ -9,7 +9,6 @@ export class User {
 
     loadUserByUsername(user: User, username: string): User {
         user.username = username;
-
         return user;
     }
 

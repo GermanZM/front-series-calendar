@@ -22,10 +22,9 @@ export class AuthService {
     ({
       Authorization: `Bearer ${this.calendarApp.getCurrentUser().accessToken}`
     });
-    const content = JSON.stringify({
-      name: 'my name'
-    });
-    return this.http.post<any>(`${this.calendarApp.getGlobalProperties().baseServerUrl}/user/close`, content, {headers: httpOptions});
+
+    return this.http.post<any>(`${this.calendarApp.getGlobalProperties().baseServerUrl}/logout`, this.calendarApp.getCurrentUser(),
+    {headers: httpOptions});
   }
 
 }

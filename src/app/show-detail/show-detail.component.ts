@@ -4,6 +4,7 @@ import { map, shareReplay, tap } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
 import { FilmService } from '../film/service/FilmService';
+import { ImgSrcDirective } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-show-detail',
@@ -26,5 +27,13 @@ export class ShowDetailComponent {
   getChildObject(): any {
     return this.childObject;
   }
+
+  getPhoto(photoName: string) {
+    this.filmService.getFilmImage(photoName).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+
 
 }

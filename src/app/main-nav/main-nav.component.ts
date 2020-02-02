@@ -31,18 +31,22 @@ export class MainNavComponent {
   logout_click() {
     this.authService.logout()
     .subscribe(response => {
-      console.log(response);
-      /* const actualUserKey = this.calendarApp.getGlobalProperties().actualUser;
-      const isLoginKey = this.calendarApp.getGlobalProperties().isLoginStorage;
-      if (sessionStorage.getItem(actualUserKey) != null || sessionStorage.getItem(isLoginKey) != null) {
-        sessionStorage.removeItem(isLoginKey);
-        sessionStorage.removeItem(actualUserKey);
-        this.user = null;
-        console.log('Se ha desconectado correctamente');
-        this.router.navigate(['/']);
-      }*/
+      if (response === 'OK') {
+        const actualUserKey = this.calendarApp.getGlobalProperties().actualUser;
+        const isLoginKey = this.calendarApp.getGlobalProperties().isLoginStorage;
+        if (sessionStorage.getItem(actualUserKey) != null || sessionStorage.getItem(isLoginKey) != null) {
+          sessionStorage.removeItem(isLoginKey);
+          sessionStorage.removeItem(actualUserKey);
+          this.calendarApp.setCurrentUser(null);
+          this.user = '';
+          this.router.navigate(['/login']);
+          swal.fire('Logout', 'Se ha deslogueado correctamente', 'success');
+        }
+      } else {
+        swal.fire('Logout', 'Error al desloguear, inténtelo más tarde', 'error');
+      }
     }, error => {
-      if (error.status === 400) {
+      if (error) {
         swal.fire('Logout', 'Error al desloguear, inténtelo más tarde', 'error');
       }
     }

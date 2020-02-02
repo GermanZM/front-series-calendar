@@ -5,6 +5,7 @@ import swal from 'sweetalert2';
 import { Utility } from '../Utility/utility';
 import { CalendarGlobalApp } from '../CalendarGlobalApp';
 import { User } from './model/user';
+import { FactoryUser } from './factory/FactoryUser';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class LoginComponent {
     if (this.checkUser()) {
       this.authService.login(this.username, this.password)
       .subscribe(response => {
-        this.calendarApp.newUserInstance();
+        this.calendarApp.setCurrentUser(FactoryUser.createNewUser());
         this.calendarApp.getCurrentUser().username = this.username;
         this.calendarApp.getCurrentUser().accessToken = response.jwtToken;
         this.saveUserToStorage(this.calendarApp.getCurrentUser());

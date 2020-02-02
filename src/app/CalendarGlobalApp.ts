@@ -20,12 +20,12 @@ export class CalendarGlobalApp {
         }
     }
 
-    newUserInstance() {
-        this.user = new User();
-    }
-
     getCurrentUser(): User {
         return this.user;
+    }
+
+    setCurrentUser(user: User ) {
+      this.user = user;
     }
 
     getUtility(): Utility {
