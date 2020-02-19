@@ -18,13 +18,7 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    const httpOptions = new HttpHeaders
-    ({
-      Authorization: `Bearer ${this.calendarApp.getCurrentUser().accessToken}`
-    });
-
-    return this.http.post<any>(`${this.calendarApp.getGlobalProperties().baseServerUrl}/logout`, this.calendarApp.getCurrentUser(),
-    {headers: httpOptions});
+    return this.http.post<any>(`${this.calendarApp.getGlobalProperties().baseServerUrl}/logout`, this.calendarApp.getCurrentUser());
   }
 
 }
