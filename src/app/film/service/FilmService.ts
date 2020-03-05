@@ -16,7 +16,7 @@ export class FilmService {
 
   getFilmImage(imageName: string): Observable<any> {
       const url = `${this.calendarApp.getGlobalProperties().baseServerUrl}/films/images/${imageName}`;
-      return this.http.get(url, {responseType: 'text'});
+      return this.http.get(url);
   }
 
 }

@@ -2,7 +2,10 @@ import { Component, OnInit, ɵALLOW_MULTIPLE_PLATFORMS } from '@angular/core';
 import { Router } from '@angular/router';
 import { FilmService } from '../film/service/FilmService';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Film } from '../film/model/film';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -15,16 +18,18 @@ export class ShowBaseComponent implements OnInit {
   public child: string;
   observer$: Observable<any>;
 
-  constructor(private route: Router, private filmService: FilmService) {}
+  constructor(private route: Router, private filmService: FilmService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     if (this.route.url === '/series') {
       this.child = 'series';
     } else if (this.route.url === '/films') {
       this.child = 'films';
-      this.observer$ = this.filmService.getFilms().pipe(tap(data => {
-        return data;
-      }));
+      this.observer$ = this.filmService.getFilms().pipe(
+        tap(data => {
+          return data;
+        })
+      );
     }
 
   }
