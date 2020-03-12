@@ -8,7 +8,7 @@ import { CalendarGlobalApp } from 'src/app/CalendarGlobalApp';
 })
 export class FilmService {
 
-    constructor(private http: HttpClient, private calendarApp: CalendarGlobalApp) {}
+  constructor(private http: HttpClient, private calendarApp: CalendarGlobalApp) {}
 
   getFilms(): Observable<any> {
       return this.http.get(`${this.calendarApp.getGlobalProperties().baseServerUrl}/films/`);
