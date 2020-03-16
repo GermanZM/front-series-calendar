@@ -8,8 +8,8 @@ export class User {
     accessToken: string;
 
     loadUserByUsername(user: User, username: string): User {
-        user.username = username;
-        return user;
+      user.username = username;
+      return user;
     }
 
 }

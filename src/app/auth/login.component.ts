@@ -7,7 +7,6 @@ import { CalendarGlobalApp } from '../CalendarGlobalApp';
 import { User } from './model/user';
 import { FactoryUser } from './factory/FactoryUser';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,14 +29,16 @@ export class LoginComponent {
     if (this.checkUser()) {
       this.authService.login(this.username, this.password)
       .subscribe(response => {
-        this.calendarApp.setCurrentUser(FactoryUser.createNewUser());
-        this.calendarApp.getCurrentUser().username = this.username;
-        this.calendarApp.getCurrentUser().accessToken = response.jwtToken;
-        this.saveUserToStorage(this.calendarApp.getCurrentUser());
-        this.router.navigate(['/calendar']);
-      }, error => {
-        if (error.status === 400 || error.status === 401) {
-          swal.fire('Error credenciales', 'Usuario o clave incorrectas', 'error');
+        if (response.statusCode === 400) {
+          swal.fire('Error Login', response.message, 'error');
+        } else if (response.statusCode === 401) {
+          swal.fire('ErrorLogin', response.message, 'error');
+        } else {
+          this.calendarApp.setCurrentUser(FactoryUser.createNewUser());
+          this.calendarApp.getCurrentUser().username = this.username;
+          this.calendarApp.getCurrentUser().accessToken = response.jwtToken;
+          this.saveUserToStorage(this.calendarApp.getCurrentUser());
+          this.router.navigate(['/calendar']);
         }
       }
       );

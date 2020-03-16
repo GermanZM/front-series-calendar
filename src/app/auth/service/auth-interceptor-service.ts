@@ -2,7 +2,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { CalendarGlobalApp } from 'src/app/CalendarGlobalApp';
 import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, EMPTY } from 'rxjs';
 import { AuthService } from './auth-service';
 import { Router } from '@angular/router';
 
@@ -23,19 +23,11 @@ export class AuthInterceptorService implements HttpInterceptor {
           // auto logout if 401 response returned from SPRING
           this.authService.logout().subscribe(response => {
             if (response === 'OK') {
-              const actualUserKey = this.calendarApp.getGlobalProperties().actualUser;
-              const isLoginKey = this.calendarApp.getGlobalProperties().isLoginStorage;
-              if (sessionStorage.getItem(actualUserKey) != null || sessionStorage.getItem(isLoginKey) != null) {
-                sessionStorage.removeItem(isLoginKey);
-                sessionStorage.removeItem(actualUserKey);
-                this.calendarApp.setCurrentUser(null);
-                this.router.navigate(['/login']);
-              }
+              this.authService.afterLogout('La sesión ha caducado, inicia sesión nuevamente', 'warning');
             }
           });
-        } else {
-          return throwError(error);
         }
+        return EMPTY;
       }));
     } else {
       return next.handle(req);

@@ -24,7 +24,7 @@ export class MainNavComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver, private calendarApp: CalendarGlobalApp,
-              private authService: AuthService, private router: Router ) {
+              private authService: AuthService) {
     this.user = this.calendarApp.getCurrentUser().username;
   }
 
@@ -32,25 +32,12 @@ export class MainNavComponent {
     this.authService.logout()
     .subscribe(response => {
       if (response === 'OK') {
-        const actualUserKey = this.calendarApp.getGlobalProperties().actualUser;
-        const isLoginKey = this.calendarApp.getGlobalProperties().isLoginStorage;
-        if (sessionStorage.getItem(actualUserKey) != null || sessionStorage.getItem(isLoginKey) != null) {
-          sessionStorage.removeItem(isLoginKey);
-          sessionStorage.removeItem(actualUserKey);
-          this.calendarApp.setCurrentUser(null);
-          this.user = '';
-          this.router.navigate(['/login']);
-          swal.fire('Logout', 'Se ha deslogueado correctamente', 'success');
-        }
+        this.user = '';
+        this.authService.afterLogout('Se ha deslogueado correctamente', 'success');
       } else {
         swal.fire('Logout', 'Error al desloguear, inténtelo más tarde', 'error');
       }
-    }, error => {
-      if (error) {
-        swal.fire('Logout', 'Error al desloguear, inténtelo más tarde', 'error');
-      }
-    }
-    );
+    });
   }
 
 
