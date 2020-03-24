@@ -1,15 +1,16 @@
 .detailContainer {
     text-align: center;
   }
-  
+
   .item-container{
     margin: 1%;
   }
-  
+
   .objectImage {
     width: 100%;
     max-width: 150px;
     max-height: 200px;
+    min-width: 150px;
+    min-height: 200px;
   }
-  
-  
+

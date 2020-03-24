@@ -6,6 +6,7 @@ import { tap, catchError } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Film } from '../film/model/film';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SerieService } from '../serie/Service/SerieService';
 
 
 @Component({
@@ -18,11 +19,16 @@ export class ShowBaseComponent implements OnInit {
   public child: string;
   observer$: Observable<any>;
 
-  constructor(private route: Router, private filmService: FilmService, private sanitizer: DomSanitizer) {}
+  constructor(private route: Router, private filmService: FilmService, private serieService: SerieService) {}
 
   ngOnInit() {
     if (this.route.url === '/series') {
       this.child = 'series';
+      this.observer$ = this.serieService.getSeries().pipe(
+        tap(data => {
+          return data;
+        })
+      );
     } else if (this.route.url === '/films') {
       this.child = 'films';
       this.observer$ = this.filmService.getFilms().pipe(

@@ -27,4 +27,10 @@ export class ShowDetailComponent {
     return this.childObject;
   }
 
+  getPhotoUrl(): string {
+    const series = 'http://localhost:8081/server/images/series/';
+    const films = 'http://localhost:8081/server/images/films/';
+    return this.child === 'series' ? series : films;
+  }
+
 }
