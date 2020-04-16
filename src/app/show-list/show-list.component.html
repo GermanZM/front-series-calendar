@@ -1,0 +1,12 @@
+<ng-container *ngIf="(this.getChildObject() | search: searchValue) as LIST">
+  <div [ngClass]="!(isHandset$ | async) ? 'showBaseContentSection' : 'showBaseContentSectionMobile'"
+   fxLayout="row wrap" [fxLayoutAlign] = "(isHandset$ | async) ? 'center' : 'start' " class="detailContainer">
+    <div fxLayout="column"  *ngFor='let item of LIST' class="item-container">
+          <img src = "{{ getPhotoUrl() }}{{item.photo}}" class = "objectImage">
+          <p class="itemTitle">{{ item.title }} </p>
+    </div>
+  </div>
+  <div fxLayoutAlign="center center" *ngIf="LIST.length === 0" class="noResultContainer">
+    <p>No se encontraron resultados para "{{ searchValue }}"</p>
+  </div>
+</ng-container>

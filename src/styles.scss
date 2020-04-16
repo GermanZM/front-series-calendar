@@ -29,17 +29,15 @@ $front-series-calendar-theme: mat-light-theme($front-series-calendar-primary, $f
 
 /* You can add global styles to this file, and also import other style files */
 html { height: 100vh }
-body { 
-    font-family: Roboto, "Helvetica Neue", sans-serif;  
-    position: relative;
-    min-height: 100vh;
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
+
 
 
 

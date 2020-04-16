@@ -21,11 +21,11 @@
     }
 }
 
-.forgot-section {
+.bottom-section {
     display: flex;
     flex-direction: column;
 
-    .forgot-password {
+    .password-link, .register-link {
         margin: 1em 0;
         text-decoration: none;
         font-size: 14px;

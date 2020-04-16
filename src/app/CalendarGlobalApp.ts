@@ -15,8 +15,8 @@ export class CalendarGlobalApp {
         this.properties = new GlobalProperties();
         this.utility = new Utility();
         const key: string = this.properties.actualUser;
-        if (sessionStorage.getItem(key) != null) {
-            this.user = JSON.parse(sessionStorage.getItem(key));
+        if (localStorage.getItem(key) != null) {
+            this.user = JSON.parse(localStorage.getItem(key));
         }
     }
 

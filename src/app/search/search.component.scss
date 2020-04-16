@@ -1,0 +1,50 @@
+$colorPlaceHolder: rgb(220,220,220);
+$searchColor: white;
+$searchBackground: rgb(80,80,80);
+
+
+.showBaseFilterSection {
+  margin-top: 1%;
+  .search {
+    text-align: center;
+    color: $searchColor;
+    font-size: 20px;
+    background: $searchBackground;
+    border-style: none;
+  }
+
+  .search:focus {
+    box-shadow: 0 0px 0px inset, 0 0 0px;
+    outline: 0 none;
+    color: $searchColor;
+    background-color: lighten($color: $searchBackground, $amount: 5%);
+  }
+
+  .search::-webkit-search-cancel-button {
+    /* Remove default */
+    -webkit-appearance: none;
+    /* Now your own custom styles */
+    margin-left: 1rem;
+    background-image: url("../../assets/img/clearIcon.png") ;
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+  }
+
+  ::-webkit-input-placeholder {
+    color: $colorPlaceHolder;
+  }
+
+  ::-ms-input-placeholder {
+    color: $colorPlaceHolder;
+  }
+
+  ::placeholder {
+    color: $colorPlaceHolder;
+  }
+
+
+
+}
+
+

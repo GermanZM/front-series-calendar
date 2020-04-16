@@ -1,0 +1,55 @@
+$itemBackGroundColor: rgb(29,29,29);
+$widthImage: 148px;
+$heightImage: 190px;
+$fontColor: white;
+
+//IF PC
+.showBaseContentSection {
+  margin: 1% 0 0 2%;
+}
+//ELSE PHONE/IPAD etc
+.showBaseContentSectionMobile {
+margin-top: 1%;
+}
+
+.detailContainer {
+    text-align: center;
+
+    .item-container {
+      margin: 0.5%;
+      padding: 1rem 1rem 0 1rem;
+      border-radius: 5%;
+      background-color: $itemBackGroundColor;
+      border: 1px solid #232323;
+      width: 180px;
+
+      .itemTitle {
+        margin: 0;
+        padding: 0;
+        margin-top: 5%;
+        color: $fontColor;
+      }
+
+      .objectImage {
+        width: 100%;
+        max-width: $widthImage;
+        max-height: $heightImage;
+        min-width: $widthImage;
+        min-height: $heightImage;
+        border-radius: 5%;
+      }
+    }
+
+}
+
+.noResultContainer {
+  width: 100%;
+  min-height: 100px;
+  font-size: 22px;
+  color: $fontColor;
+  background-color: $itemBackGroundColor;
+  word-break: break-all;
+}
+
+
+

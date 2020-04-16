@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [ngClass]= "{hidden: !(isHandset | async) == false}"
+      [ngClass]= "{hidden: (isHandset$ | async) == false}"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) == true">
     <mat-toolbar>Z-Calendar</mat-toolbar>
@@ -19,22 +19,23 @@
         mat-icon-button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon aria-label="Side nav toggle icon" class="matMenuIcon">menu</mat-icon>
       </button>
-      <div class="container main-menu" *ngIf="!(isHandset$ | async)">
-        <!-- Mostramos el menú si no estamos en un teléfono -->
-        <a [routerLink]="['/calendar']"  routerLinkActive="router-link-active">Z-Calendar Inicio</a>
-        <a [routerLink]="['/series']">Series</a>
-        <a [routerLink]="['/films']">Películas</a>
-        <div ngbDropdown class="d-inline-block dropdown-user">
+
+      <div class="container main-menu">
+        <!-- Show menú if the device is not a tablet, mobile... -->
+        <a [routerLink]="['/calendar']" *ngIf="!(isHandset$ | async)" routerLinkActive="router-link-active">Z-Calendar Inicio</a>
+        <a [routerLink]="['/series']" *ngIf="!(isHandset$ | async)" routerLinkActive="router-link-active">Series</a>
+        <a [routerLink]="['/films']" *ngIf="!(isHandset$ | async)" routerLinkActive="router-link-active">Películas</a>
+
+        <div ngbDropdown class="d-inline-block dropdown-account">
             <div class="btn-user" ngbDropdownToggle>
               <mat-icon class="icon-user">account_circle</mat-icon>
-              <span class="username">{{ user }} </span>
             </div>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic" >
-              <button ngbDropdownItem>Perfil</button>
-              <button ngbDropdownItem>Configuración</button>
-              <button ngbDropdownItem (click)="logout_click()">Salir</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic" class="menu" >
+              <button ngbDropdownItem class="dropItem">Cuenta</button>
+              <button ngbDropdownItem class="dropItem">Configuración</button>
+              <button ngbDropdownItem (click)="logout_click()" class="dropItem">Cerrar sesión</button>
             </div>
         </div>
       </div>

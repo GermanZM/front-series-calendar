@@ -1,11 +1,23 @@
-$primary: rgb(111,0,255);
+$primary: rgb(10,10,10);
+$primaryHover: rgb(34, 34, 34);
+$backgroundColor: rgb(24,24,24);
+$linkActiveColor:  #e1184f;
+
+mat-sidenav-container {
+  background-color: $backgroundColor;
+}
+
+
 .sidenav-content {
   min-height: 100vh;
-  padding-bottom: 80px;
+  padding-bottom: 9rem;
 }
 
 .sidenav {
   width: 200px;
+  .hidden {
+    display: none;
+  }
 }
 
 .sidenav .mat-toolbar {
@@ -24,41 +36,56 @@ $primary: rgb(111,0,255);
 mat-toolbar {
   .main-menu {
     .router-link-active {
-      background: darken($color: $primary, $amount: 20%);
+      background: $linkActiveColor;
     }
-    
+    .router-link-active:hover:not(:active) {
+      background: $linkActiveColor;
+    }
+
     a {
       padding: 0.8em;
       text-decoration: none;
       color: white;
       display: inline-block;
-      &:hover {
-          background: darken($color: $primary, $amount: 10%);
+      &:hover:not(.active) {
+          background: $primaryHover;
       }
     }
 
   }
 }
 
-.dropdown-user {
+//RIGHT MENU
+.dropdown-account {
   float:right;
   padding: 0.8em;
+
+  .btn-user {
+    color:white;
+    cursor: pointer;
+
+    .icon-user{
+      vertical-align: middle;
+      transform: scale(1.25);
+      margin-right: 0.5em;
+    }
+
+  }
+  .menu {
+    background-color: rgb(29,29,29);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(151, 151, 151, 0.34);
+    button:hover {
+      background-color: rgb(29,29,29);
+      zoom: 1.05;
+    }
+    .dropItem {
+      color: white;
+    }
+  }
 }
 
-.btn-user {
-  color:white;
-  cursor: pointer;
-}
-
-.icon-user{
-  vertical-align: middle;
-  transform: scale(1.25);
-  margin-right: 0.5em;
-}
-.username{
-  vertical-align: middle;
-}
-
-.hidden {
-  display: none;
+.matMenuIcon {
+  color: white;
 }

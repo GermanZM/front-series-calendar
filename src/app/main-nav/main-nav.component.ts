@@ -5,7 +5,6 @@ import { map, shareReplay } from 'rxjs/operators';
 import { CalendarGlobalApp } from '../CalendarGlobalApp';
 import { AuthService } from '../auth/service/auth-service';
 import swal from 'sweetalert2';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-nav',
@@ -39,6 +38,5 @@ export class MainNavComponent {
       }
     });
   }
-
 
 }

@@ -1,12 +1,9 @@
+<app-search (searchEmitter)="handleSearch($event)"></app-search>
 <div  class="showBase">
-    <div class="showBaseFilterSection">
-      FILTROS
+    <div *ngIf="observer$ | async as obs">
+        <app-show-list [child] = 'child' [childObject] = 'obs' [searchValue] = 'filterValue'></app-show-list>
     </div>
-    <div  class="showBaseContentSection" *ngIf="observer$ | async as obs">
-        <app-show-detail [child] = 'child' [childObject] = 'obs'></app-show-detail>
-    </div>
-
-  </div>
+</div>
 
 
 

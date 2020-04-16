@@ -1,6 +1,0 @@
-<div fxLayout="row wrap" [fxLayoutAlign] = "(isHandset$ | async) ? 'center' : 'start' " class="detailContainer">
-  <div fxLayout="column"  *ngFor='let item of this.getChildObject()' class="item-container">
-        <img src = "{{ getPhotoUrl() }}{{item.photo}}" class = "objectImage">
-        <p>{{ item.title }} </p>
-  </div>
-</div>

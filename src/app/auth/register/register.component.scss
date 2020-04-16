@@ -1,0 +1,36 @@
+.register-header {
+  text-align: center;
+  padding: 0.5em;
+  .register-title {
+      font-size: 24px;
+      font-weight: 600;
+  }
+}
+
+.register-body {
+ padding: 0 2em;
+
+ .basic-format-field {
+      width: 100%;
+  }
+
+  .register-button {
+      display: flex;
+      flex-direction: column;
+      margin: 0.5em 0;
+  }
+}
+
+.bottom-section {
+  display: flex;
+  flex-direction: column;
+
+  .password-link, .login-link {
+      margin: 1em 0;
+      text-decoration: none;
+      font-size: 14px;
+      color: grey;
+  }
+}
+
+

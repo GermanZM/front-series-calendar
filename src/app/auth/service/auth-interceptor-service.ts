@@ -15,7 +15,7 @@ export class AuthInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (req.url !== 'http://localhost:8081/authenticate') {
+    if (req.url !== 'http://localhost:8081/authenticate' && req.url !== 'http://localhost:8081/register') {
       const token: string = this.calendarApp.getCurrentUser().accessToken;
       const authReq = req.clone({headers: req.headers.set('Authorization', `Bearer ${token}`)});
       return next.handle(authReq).pipe(catchError(error => {

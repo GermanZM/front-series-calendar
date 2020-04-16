@@ -1,12 +1,11 @@
-import { Component, OnInit, ɵALLOW_MULTIPLE_PLATFORMS } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FilmService } from '../film/service/FilmService';
 import { Observable } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Film } from '../film/model/film';
-import { HttpErrorResponse } from '@angular/common/http';
+import { tap, map, shareReplay, filter } from 'rxjs/operators';
 import { SerieService } from '../serie/Service/SerieService';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { debug } from 'util';
 
 
 @Component({
@@ -16,10 +15,19 @@ import { SerieService } from '../serie/Service/SerieService';
 })
 export class ShowBaseComponent implements OnInit {
 
-  public child: string;
+  child: string;
   observer$: Observable<any>;
+  filterValue = '';
 
-  constructor(private route: Router, private filmService: FilmService, private serieService: SerieService) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+              private route: Router, private filmService: FilmService, private serieService: SerieService) {}
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  .pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
+
 
   ngOnInit() {
     if (this.route.url === '/series') {
@@ -38,6 +46,10 @@ export class ShowBaseComponent implements OnInit {
       );
     }
 
+  }
+
+  handleSearch(value: string) {
+    this.filterValue = value;
   }
 
 

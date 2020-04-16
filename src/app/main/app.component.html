@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4 home-container-section align-self-center">
                     <span *ngIf="!urlLogin">
-                        <a [routerLink]="['/login']" class="btn btn-link btn-home" (click)="loginClick()">Login</a>
+                        <a [routerLink]="['/login']" class="btn btn-link btn-home" color="primary"(click)="loginClick()">Login</a>
                         <a [routerLink]="['/register']" class="btn btn-link btn-home">Register</a>
                     </span>
                     <router-outlet></router-outlet>
@@ -27,7 +27,13 @@
             <router-outlet></router-outlet>
             <!-- Footer -->
             <footer id="footer">
-                FOOTER WEB Z-CALENDAR
+                <p class="autor">Germán Zurita Mangano</p>
+                <div fxLayout="row" fxLayoutAlign="center">
+                  <a class="fa fa-facebook-official socialLink" style="font-size:24px"></a>
+                  <a class="fa fa-twitter socialLink" style="font-size:24px"></a>
+                  <a class="fa fa-linkedin-square socialLink" style="font-size:24px"></a>
+                </div>
+                <p class="fa fa-copyright copyright"> Z-Calendar. Todos los derechos reservados.</p>
             </footer>
         </app-main-nav>
 </ng-template>

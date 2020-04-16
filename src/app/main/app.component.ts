@@ -28,13 +28,13 @@ export class AppComponent {
   checkIsLogin() {
     const key: string = this.calendarApp.getGlobalProperties().isLoginStorage;
 
-    if (this.calendarApp.getCurrentUser() == null && sessionStorage.getItem(key) == null) {
+    if (this.calendarApp.getCurrentUser() == null && localStorage.getItem(key) == null) {
       this.isLogin$ = false;
-    } else if (sessionStorage.getItem(key) != null) {
-      this.isLogin$ = sessionStorage.getItem(key) === 'true';
+    } else if (localStorage.getItem(key) != null) {
+      this.isLogin$ = localStorage.getItem(key) === 'true';
     } else if (this.calendarApp.getCurrentUser() != null) {
       this.isLogin$ = true;
-      sessionStorage.setItem(key, this.isLogin$.toString());
+      localStorage.setItem(key, this.isLogin$.toString());
     }
   }
 

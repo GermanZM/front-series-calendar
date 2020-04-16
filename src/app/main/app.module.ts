@@ -7,24 +7,29 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainNavComponent } from '../main-nav/main-nav.component';
 import { MatButtonModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material/';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LoginComponent } from '../auth/login.component';
+import { LoginComponent } from '../auth/login/login.component';
+import { RegisterComponent } from '../auth/register/register.component';
 import { CalendarHomeComponent } from '../calendar-home/calendar-home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatSelectModule, MatInputModule, MatCardModule } from '@angular/material/';
 import { ShowBaseComponent } from '../show-base/show-base.component';
-import { ShowDetailComponent } from '../show-detail/show-detail.component';
+import { ShowListComponent } from '../show-list/show-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthInterceptorService } from '../auth/service/auth-interceptor-service';
-
+import { SearchComponent } from '../search/search.component';
+import { SearchPipe } from '../search/search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
     LoginComponent,
+    RegisterComponent,
     CalendarHomeComponent,
     ShowBaseComponent,
-    ShowDetailComponent,
+    ShowListComponent,
+    SearchComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,

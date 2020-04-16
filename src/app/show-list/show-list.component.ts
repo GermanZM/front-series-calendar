@@ -2,20 +2,20 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { FilmService } from '../film/service/FilmService';
 
 @Component({
-  selector: 'app-show-detail',
-  templateUrl: './show-detail.component.html',
-  styleUrls: ['./show-detail.component.scss']
+  selector: 'app-show-list',
+  templateUrl: './show-list.component.html',
+  styleUrls: ['./show-list.component.scss']
 })
-export class ShowDetailComponent {
+export class ShowListComponent {
 
   @Input() child: string;
   @Input() childObject: any;
+  @Input() searchValue: string;
   nFilms: any[];
 
-  constructor(private breakpointObserver: BreakpointObserver, private filmService: FilmService) {}
+  constructor(private breakpointObserver: BreakpointObserver) {}
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   .pipe(
