@@ -33,6 +33,7 @@ export class RegisterComponent {
           swal.fire(headerMsg, response.message, 'error');
         } else {
           swal.fire('', 'Se ha registrado correctamente', 'success');
+          this.router.navigate(['/login']);
         }
       }
       );

@@ -5,7 +5,6 @@ import swal from 'sweetalert2';
 import { Utility } from '../../Utility/utility';
 import { CalendarGlobalApp } from '../../CalendarGlobalApp';
 import { User } from '../model/user';
-import { FactoryUser } from '../factory/FactoryUser';
 
 @Component({
   selector: 'app-login',
@@ -41,6 +40,22 @@ export class LoginComponent {
           this.calendarApp.getCurrentUser().accessToken = response.jwtToken;
           this.saveUserToStorage(this.calendarApp.getCurrentUser());
           this.router.navigate(['/calendar']);
+          if (this.calendarApp.getCurrentUser().profile === null) {
+            swal.fire({
+              title: '¿Desea configurar su perfil?',
+              text: 'Es necesario configurar el perfil para recuperar la contraseña.',
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Confirmar',
+              cancelButtonText: 'Cancelar'
+            }).then((result) => {
+              if (result.value) {
+                this.router.navigate(['/configuration']);
+              }
+            });
+          }
         }
       }
       );

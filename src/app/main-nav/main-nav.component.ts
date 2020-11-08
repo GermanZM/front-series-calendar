@@ -5,6 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { CalendarGlobalApp } from '../CalendarGlobalApp';
 import { AuthService } from '../auth/service/auth-service';
 import swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-nav',
@@ -23,7 +24,7 @@ export class MainNavComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver, private calendarApp: CalendarGlobalApp,
-              private authService: AuthService) {
+              private authService: AuthService, private router: Router) {
     this.user = this.calendarApp.getCurrentUser().username;
   }
 
@@ -37,6 +38,10 @@ export class MainNavComponent {
         swal.fire('Logout', 'Error al desloguear, inténtelo más tarde', 'error');
       }
     });
+  }
+
+  account_click() {
+    this.router.navigate(['/configuration']);
   }
 
 }

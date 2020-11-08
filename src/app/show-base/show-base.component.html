@@ -1,5 +1,5 @@
 <app-search (searchEmitter)="handleSearch($event)"></app-search>
-<div  class="showBase">
+<div class="showBase">
     <div *ngIf="observer$ | async as obs">
         <app-show-list [child] = 'child' [childObject] = 'obs' [searchValue] = 'filterValue'></app-show-list>
     </div>

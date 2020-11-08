@@ -33,8 +33,7 @@
               <mat-icon class="icon-user">account_circle</mat-icon>
             </div>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic" class="menu" >
-              <button ngbDropdownItem class="dropItem">Cuenta</button>
-              <button ngbDropdownItem class="dropItem">Configuración</button>
+              <button ngbDropdownItem class="dropItem" (click)="account_click()">Cuenta</button>
               <button ngbDropdownItem (click)="logout_click()" class="dropItem">Cerrar sesión</button>
             </div>
         </div>

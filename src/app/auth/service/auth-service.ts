@@ -28,7 +28,6 @@ export class AuthService {
     const newUser = FactoryUser.createNewUser();
     newUser.username = username;
     newUser.password = password;
-    newUser.enabled = true;
     return this.http.post<any>(`${this.calendarApp.getGlobalProperties().baseServerUrl}/register`, newUser);
   }
 

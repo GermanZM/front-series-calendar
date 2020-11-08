@@ -7,11 +7,16 @@ import { ShowBaseComponent } from '../show-base/show-base.component';
 import { AuthGuard } from '../auth/guard/Auth.guard';
 import { LoginGuard } from '../auth/guard/LoginGuard';
 import { RegisterComponent } from '../auth/register/register.component';
+import { AccountComponent } from '../account/account.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'register', component: RegisterComponent },
-  { path: 'calendar', component: CalendarHomeComponent, canActivate: [AuthGuard] },
+  { path: 'calendar', component: CalendarHomeComponent,
+    // children: [
+    // { path: 'configuration', component: ConfigurationComponent}],
+    canActivate: [AuthGuard] },
+  { path: 'configuration', component: AccountComponent, canActivate: [AuthGuard]},
   { path: 'series', component: ShowBaseComponent, canActivate: [AuthGuard]},
   { path: 'films', component: ShowBaseComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: '/', pathMatch: 'full'},

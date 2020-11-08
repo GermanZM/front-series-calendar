@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from '../auth/login/login.component';
 import { RegisterComponent } from '../auth/register/register.component';
 import { CalendarHomeComponent } from '../calendar-home/calendar-home.component';
+import { AccountComponent } from '../account/account.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatSelectModule, MatInputModule, MatCardModule } from '@angular/material/';
 import { ShowBaseComponent } from '../show-base/show-base.component';
@@ -26,6 +27,7 @@ import { SearchPipe } from '../search/search.pipe';
     LoginComponent,
     RegisterComponent,
     CalendarHomeComponent,
+    AccountComponent,
     ShowBaseComponent,
     ShowListComponent,
     SearchComponent,
